@@ -1,0 +1,6 @@
+<li class="task">
+    <{input type="checkbox" checked=kwargs.task.done
+        hx_post=url_for("toggle", task_id=kwargs.task.id) hx_swap="outerHTML" hx_target="closest li" }/>
+    {{kwargs.task.title}}
+    <{button hx_post=url_for("delete", task_id=kwargs.task.id) hx_swap="outerHTML" hx_target="closest li"}>x</{}>
+</li>

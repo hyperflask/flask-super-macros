@@ -1,0 +1,20 @@
+
+{% macro Header() -%}
+    {{ html_tag('h1', style="color: red", inner=caller()) }}
+{%- endmacro %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <script src="https://unpkg.com/htmx.org@1.9.9" integrity="sha384-QFjmbokDn2DjBjq+fM+8LUIVrAgqcNW2s0PjAxHETgRn9l4fvX31ZxDxvwQnyMOX" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <{Header}>Todos</{Header}>
+        <{TaskList tasks=tasks }/>
+        <{form hx_post=url_for("create") hx_target="previous ul" hx_swap="beforeend" hx_on="htmx:afterRequest: event.target.reset(); event.target.title.focus()" }>
+            <input type="text" name="title" placeholder="Task title">
+            <{SubmitBtn}>Add</{}>
+        </{form}>
+    </body>
+</html>

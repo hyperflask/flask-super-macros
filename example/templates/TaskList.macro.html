@@ -1,0 +1,5 @@
+<ul class="tasklist">
+    {% for task in kwargs.tasks %}
+        <{Task task=task }/>
+    {% endfor %}
+</ul>
